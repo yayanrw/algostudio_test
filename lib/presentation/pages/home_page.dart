@@ -1,6 +1,8 @@
 import 'package:algostudio_test/core/config/constants.dart';
+import 'package:algostudio_test/core/router/router.dart';
 import 'package:algostudio_test/core/utils/request_state.dart';
 import 'package:algostudio_test/presentation/providers/memes_notifier.dart';
+import 'package:algostudio_test/presentation/widgets/my_image.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,9 +45,11 @@ class _HomePageState extends State<HomePage> {
               itemCount: data.memes.length,
               itemBuilder: (context, index) {
                 final meme = data.memes[index];
-                return Container(
-                  margin: const EdgeInsets.all(8),
-                  child: Image.network(meme.url),
+                return GestureDetector(
+                  onTap: () {
+                    context.router.push(DetailRoute(meme: meme));
+                  },
+                  child: MyImage(meme: meme),
                 );
               },
             );
