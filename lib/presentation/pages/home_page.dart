@@ -2,7 +2,7 @@ import 'package:algostudio_test/core/config/constants.dart';
 import 'package:algostudio_test/core/router/router.dart';
 import 'package:algostudio_test/core/utils/request_state.dart';
 import 'package:algostudio_test/presentation/providers/memes_notifier.dart';
-import 'package:algostudio_test/presentation/widgets/my_image.dart';
+import 'package:algostudio_test/presentation/widgets/my_simple_image.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       context.router.push(DetailRoute(meme: meme));
                     },
-                    child: MyImage(meme: meme),
+                    child: MySimpleImage(imgUrl: meme.url),
                   );
                 },
               ),
