@@ -38,20 +38,25 @@ class _HomePageState extends State<HomePage> {
               child: Text(data.message),
             );
           } else {
-            return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-              ),
-              itemCount: data.memes.length,
-              itemBuilder: (context, index) {
-                final meme = data.memes[index];
-                return GestureDetector(
-                  onTap: () {
-                    context.router.push(DetailRoute(meme: meme));
-                  },
-                  child: MyImage(meme: meme),
-                );
+            return RefreshIndicator(
+              onRefresh: () async {
+                await data.fetchMemes();
               },
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                ),
+                itemCount: data.memes.length,
+                itemBuilder: (context, index) {
+                  final meme = data.memes[index];
+                  return GestureDetector(
+                    onTap: () {
+                      context.router.push(DetailRoute(meme: meme));
+                    },
+                    child: MyImage(meme: meme),
+                  );
+                },
+              ),
             );
           }
         },
