@@ -17,8 +17,9 @@ import '../../data/datasources/remote/remote_datasource.dart' as _i5;
 import '../../data/repositories/meme_repository_impl.dart' as _i7;
 import '../../domain/repositories/meme_repository.dart' as _i6;
 import '../../domain/usecases/get_memes.dart' as _i8;
+import '../../presentation/providers/memes_notifier.dart' as _i9;
 import '../router/router.dart' as _i3;
-import 'register_module.dart' as _i9;
+import 'register_module.dart' as _i10;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -40,8 +41,9 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i7.MemeRepositoryImpl(gh<_i5.RemoteDataSource>()));
     gh.lazySingleton<_i8.GetMemes>(
         () => _i8.GetMemes(gh<_i6.MemeRepository>()));
+    gh.factory<_i9.MemesNotifier>(() => _i9.MemesNotifier(gh<_i8.GetMemes>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i9.RegisterModule {}
+class _$RegisterModule extends _i10.RegisterModule {}
