@@ -11,7 +11,7 @@ class MemesResponse {
   });
 
   bool? success;
-  Data? data;
+  DataDto? data;
 
   factory MemesResponse.fromJson(Map<String, dynamic> json) => _$MemesResponseFromJson(json);
 

@@ -11,7 +11,7 @@ MemesResponse _$MemesResponseFromJson(Map<String, dynamic> json) =>
       success: json['success'] as bool?,
       data: json['data'] == null
           ? null
-          : Data.fromJson(json['data'] as Map<String, dynamic>),
+          : DataDto.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$MemesResponseToJson(MemesResponse instance) =>

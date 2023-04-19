@@ -4,14 +4,14 @@ import 'package:json_annotation/json_annotation.dart';
 part 'data_dto.g.dart';
 
 @JsonSerializable()
-class Data {
-  Data({
+class DataDto {
+  DataDto({
     this.memes,
   });
 
   List<MemeDto>? memes;
 
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  factory DataDto.fromJson(Map<String, dynamic> json) => _$DataDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  Map<String, dynamic> toJson() => _$DataDtoToJson(this);
 }
