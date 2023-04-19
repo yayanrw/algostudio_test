@@ -10,7 +10,7 @@ class MyImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(defaultPadding/2),
+      padding: const EdgeInsets.all(defaultPadding),
       child: Center(
         child: Image.network(meme.url),
       ),
