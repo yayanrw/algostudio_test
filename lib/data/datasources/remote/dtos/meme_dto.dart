@@ -6,18 +6,18 @@ part 'meme_dto.g.dart';
 @JsonSerializable()
 class MemeDto {
   MemeDto({
-    this.id,
-    this.name,
-    this.url,
+    required this.id,
+    required this.name,
+    required this.url,
     this.width,
     this.height,
     this.boxCount,
     this.captions,
   });
 
-  String? id;
-  String? name;
-  String? url;
+  String id;
+  String name;
+  String url;
   int? width;
   int? height;
   int? boxCount;

@@ -6,10 +6,10 @@ part 'data_dto.g.dart';
 @JsonSerializable()
 class DataDto {
   DataDto({
-    this.memes,
+    required this.memes,
   });
 
-  List<MemeDto>? memes;
+  List<MemeDto> memes;
 
   factory DataDto.fromJson(Map<String, dynamic> json) => _$DataDtoFromJson(json);
 

@@ -7,8 +7,8 @@ part of 'data_dto.dart';
 // **************************************************************************
 
 DataDto _$DataDtoFromJson(Map<String, dynamic> json) => DataDto(
-      memes: (json['memes'] as List<dynamic>?)
-          ?.map((e) => MemeDto.fromJson(e as Map<String, dynamic>))
+      memes: (json['memes'] as List<dynamic>)
+          .map((e) => MemeDto.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

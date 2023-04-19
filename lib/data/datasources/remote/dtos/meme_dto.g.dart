@@ -7,9 +7,9 @@ part of 'meme_dto.dart';
 // **************************************************************************
 
 MemeDto _$MemeDtoFromJson(Map<String, dynamic> json) => MemeDto(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      url: json['url'] as String?,
+      id: json['id'] as String,
+      name: json['name'] as String,
+      url: json['url'] as String,
       width: json['width'] as int?,
       height: json['height'] as int?,
       boxCount: json['boxCount'] as int?,

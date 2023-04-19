@@ -6,14 +6,15 @@ part 'memes_response.g.dart';
 @JsonSerializable()
 class MemesResponse {
   MemesResponse({
-    this.success,
-    this.data,
+    required this.success,
+    required this.data,
   });
 
-  bool? success;
-  DataDto? data;
+  bool success;
+  DataDto data;
 
-  factory MemesResponse.fromJson(Map<String, dynamic> json) => _$MemesResponseFromJson(json);
+  factory MemesResponse.fromJson(Map<String, dynamic> json) =>
+      _$MemesResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$MemesResponseToJson(this);
 }
