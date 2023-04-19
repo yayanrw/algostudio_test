@@ -28,6 +28,9 @@ class MyImage extends StatelessWidget {
               ),
             );
           },
+          errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+            return const Icon(Icons.error);
+          },
         ),
       ),
     );
