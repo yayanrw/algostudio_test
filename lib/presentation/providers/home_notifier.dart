@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable()
-class MemesNotifier extends ChangeNotifier {
+class HomeNotifier extends ChangeNotifier {
   final GetMemes getMemes;
 
-  MemesNotifier(this.getMemes);
+  HomeNotifier(this.getMemes);
 
   String _message = '';
 
