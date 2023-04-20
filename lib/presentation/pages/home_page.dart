@@ -1,7 +1,7 @@
 import 'package:algostudio_test/core/config/constants.dart';
 import 'package:algostudio_test/core/router/router.dart';
 import 'package:algostudio_test/core/utils/request_state.dart';
-import 'package:algostudio_test/presentation/providers/memes_notifier.dart';
+import 'package:algostudio_test/presentation/providers/home_notifier.dart';
 import 'package:algostudio_test/presentation/widgets/my_simple_image.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +20,14 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     Future.microtask(
-        () => Provider.of<MemesNotifier>(context, listen: false).fetchMemes());
+        () => Provider.of<HomeNotifier>(context, listen: false).fetchMemes());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(appTitle)),
-      body: Consumer<MemesNotifier>(
+      body: Consumer<HomeNotifier>(
         builder: (context, data, _) {
           if (data.requestState == RequestState.loading) {
             return const Center(
