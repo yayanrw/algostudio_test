@@ -1,6 +1,7 @@
 import 'package:algostudio_test/core/config/constants.dart';
 import 'package:algostudio_test/core/router/router.dart';
-import 'package:algostudio_test/presentation/providers/memes_notifier.dart';
+import 'package:algostudio_test/presentation/providers/detail_notifier.dart';
+import 'package:algostudio_test/presentation/providers/home_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:algostudio_test/core/di/injection.dart' as di;
 import 'package:provider/provider.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => di.getIt<MemesNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.getIt<HomeNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.getIt<DetailNotifier>()),
       ],
       child: MaterialApp.router(
         useInheritedMediaQuery: true,
