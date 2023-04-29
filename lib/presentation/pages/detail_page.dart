@@ -1,7 +1,10 @@
 import 'package:algostudio_test/core/config/constants.dart';
+import 'package:algostudio_test/core/router/router.dart';
+import 'package:algostudio_test/core/utils/utils.dart';
 import 'package:algostudio_test/domain/entities/meme.dart';
 import 'package:algostudio_test/presentation/providers/detail_notifier.dart';
 import 'package:algostudio_test/presentation/widgets/my_complex_image.dart';
+import 'package:algostudio_test/presentation/widgets/widget_to_image.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,14 +20,19 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  late GlobalKey keyToImage;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.meme.name), actions: [
         IconButton(
           icon: const Icon(Icons.save),
-          onPressed: () {
-            // Handle save button press
+          onPressed: () async {
+            final bytesOfImage = await Utils.capture(keyToImage);
+            if (context.mounted) {
+              context.router.push(GeneratedImageRoute(myBytes: bytesOfImage));
+            }
           },
         ),
 
@@ -34,7 +42,10 @@ class _DetailPageState extends State<DetailPage> {
           builder: (context, data, _) {
             return Column(
               children: [
-                MyComplexImage(imgUrl: widget.meme.url),
+                WidgetToImage(builder: (key) {
+                  keyToImage = key;
+                  return MyComplexImage(imgUrl: widget.meme.url);
+                }),
               ],
             );
           },
