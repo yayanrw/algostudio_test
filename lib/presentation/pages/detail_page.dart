@@ -20,16 +20,21 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.meme.name),
-      ),
+      appBar: AppBar(title: Text(widget.meme.name), actions: [
+        IconButton(
+          icon: const Icon(Icons.save),
+          onPressed: () {
+            // Handle save button press
+          },
+        ),
+
+      ]),
       body: SingleChildScrollView(
         child: Consumer<DetailNotifier>(
           builder: (context, data, _) {
             return Column(
               children: [
-                MyComplexImage(
-                    imgUrl: widget.meme.url),
+                MyComplexImage(imgUrl: widget.meme.url),
               ],
             );
           },
@@ -49,7 +54,8 @@ class _DetailPageState extends State<DetailPage> {
                       leading: const Icon(Icons.photo_library),
                       title: const Text('Add Photo'),
                       onTap: () {
-                        Provider.of<DetailNotifier>(context, listen: false).pickImage();
+                        Provider.of<DetailNotifier>(context, listen: false)
+                            .pickImage();
                         Navigator.pop(context);
                       },
                     ),
