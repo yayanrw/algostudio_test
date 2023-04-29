@@ -31,6 +31,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomePage(),
       );
     },
+    GeneratedImageRoute.name: (routeData) {
+      final args = routeData.argsAs<GeneratedImageRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: GeneratedImagePage(
+          key: args.key,
+          myBytes: args.myBytes,
+        ),
+      );
+    },
   };
 }
 
@@ -83,4 +93,42 @@ class HomeRoute extends PageRouteInfo<void> {
   static const String name = 'HomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [GeneratedImagePage]
+class GeneratedImageRoute extends PageRouteInfo<GeneratedImageRouteArgs> {
+  GeneratedImageRoute({
+    Key? key,
+    required Uint8List myBytes,
+    List<PageRouteInfo>? children,
+  }) : super(
+          GeneratedImageRoute.name,
+          args: GeneratedImageRouteArgs(
+            key: key,
+            myBytes: myBytes,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'GeneratedImageRoute';
+
+  static const PageInfo<GeneratedImageRouteArgs> page =
+      PageInfo<GeneratedImageRouteArgs>(name);
+}
+
+class GeneratedImageRouteArgs {
+  const GeneratedImageRouteArgs({
+    this.key,
+    required this.myBytes,
+  });
+
+  final Key? key;
+
+  final Uint8List myBytes;
+
+  @override
+  String toString() {
+    return 'GeneratedImageRouteArgs{key: $key, myBytes: $myBytes}';
+  }
 }

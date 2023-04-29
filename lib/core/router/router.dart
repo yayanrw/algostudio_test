@@ -1,5 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:algostudio_test/domain/entities/meme.dart';
 import 'package:algostudio_test/presentation/pages/detail_page.dart';
+import 'package:algostudio_test/presentation/pages/generated_image_page.dart';
 import 'package:algostudio_test/presentation/pages/home_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,6 +17,7 @@ class AppRouter extends _$AppRouter {
           path: '/',
           page: HomeRoute.page,
         ),
-        AutoRoute(path: '/detail/:meme', page: DetailRoute.page)
+        AutoRoute(path: '/detail/:meme', page: DetailRoute.page),
+        AutoRoute(page: GeneratedImageRoute.page),
       ];
 }
