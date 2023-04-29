@@ -49,6 +49,7 @@ class _DetailPageState extends State<DetailPage> {
                       leading: const Icon(Icons.photo_library),
                       title: const Text('Add Photo'),
                       onTap: () {
+                        Provider.of<DetailNotifier>(context, listen: false).pickImage();
                         Navigator.pop(context);
                       },
                     ),
@@ -108,6 +109,6 @@ class _DetailPageState extends State<DetailPage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<DetailNotifier>(context, listen: false).resetAddedText();
+    Provider.of<DetailNotifier>(context, listen: false).reset();
   }
 }

@@ -45,12 +45,12 @@ class _MyComplexImageState extends State<MyComplexImage> {
               i < Provider.of<DetailNotifier>(context).addedText.length;
               i++)
             Positioned(
-              left: Provider.of<DetailNotifier>(context).offsets[i].dx,
-              top: Provider.of<DetailNotifier>(context).offsets[i].dy,
+              left: Provider.of<DetailNotifier>(context).offsetsText[i].dx,
+              top: Provider.of<DetailNotifier>(context).offsetsText[i].dy,
               child: GestureDetector(
                 onPanUpdate: (details) {
                   Provider.of<DetailNotifier>(context, listen: false)
-                      .updateOffset(
+                      .updateOffsetText(
                     i,
                     details,
                   );
@@ -66,6 +66,28 @@ class _MyComplexImageState extends State<MyComplexImage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                ),
+              ),
+            ),
+
+          for (int i = 0;
+          i < Provider.of<DetailNotifier>(context).addedImage.length;
+          i++)
+            Positioned(
+              left: Provider.of<DetailNotifier>(context).offsetsImage[i].dx,
+              top: Provider.of<DetailNotifier>(context).offsetsImage[i].dy,
+              child: GestureDetector(
+                onPanUpdate: (details) {
+                  Provider.of<DetailNotifier>(context, listen: false)
+                      .updateOffsetImage(
+                    i,
+                    details,
+                  );
+                },
+                child: Image.file(
+                  width: 400,
+                  Provider.of<DetailNotifier>(context).addedImage[i],
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
