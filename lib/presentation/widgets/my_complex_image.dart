@@ -1,28 +1,18 @@
 import 'package:algostudio_test/core/config/constants.dart';
+import 'package:algostudio_test/presentation/providers/detail_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MyComplexImage extends StatefulWidget {
-  const MyComplexImage(
-      {Key? key, required this.imgUrl, required this.addedText})
-      : super(key: key);
+  const MyComplexImage({Key? key, required this.imgUrl}) : super(key: key);
 
   final String imgUrl;
-  final List<String> addedText;
 
   @override
   State<MyComplexImage> createState() => _MyComplexImageState();
 }
 
 class _MyComplexImageState extends State<MyComplexImage> {
-  List<Offset> _offsets = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _offsets = List.filled(widget.addedText.length, Offset.zero);
-    print("anjing ${widget.addedText}");
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -51,24 +41,25 @@ class _MyComplexImageState extends State<MyComplexImage> {
               return const Icon(Icons.error);
             },
           ),
-          for (int i = 0; i < widget.addedText.length; i++)
+          for (int i = 0;
+              i < Provider.of<DetailNotifier>(context).addedText.length;
+              i++)
             Positioned(
-              left: _offsets[i].dx,
-              top: _offsets[i].dy,
+              left: Provider.of<DetailNotifier>(context).offsets[i].dx,
+              top: Provider.of<DetailNotifier>(context).offsets[i].dy,
               child: GestureDetector(
                 onPanUpdate: (details) {
-                  setState(() {
-                    _offsets[i] = Offset(
-                      _offsets[i].dx + details.delta.dx,
-                      _offsets[i].dy + details.delta.dy,
-                    );
-                  });
+                  Provider.of<DetailNotifier>(context, listen: false)
+                      .updateOffset(
+                    i,
+                    details,
+                  );
                 },
                 child: Container(
                   padding: const EdgeInsets.all(defaultPadding),
                   color: Colors.black.withOpacity(0.5),
                   child: Text(
-                    widget.addedText[i],
+                    Provider.of<DetailNotifier>(context).addedText[i],
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
