@@ -29,7 +29,7 @@ class _DetailPageState extends State<DetailPage> {
             return Column(
               children: [
                 MyComplexImage(
-                    imgUrl: widget.meme.url, addedText: data.addedText),
+                    imgUrl: widget.meme.url),
               ],
             );
           },
@@ -103,5 +103,11 @@ class _DetailPageState extends State<DetailPage> {
         );
       },
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<DetailNotifier>(context, listen: false).resetAddedText();
   }
 }
